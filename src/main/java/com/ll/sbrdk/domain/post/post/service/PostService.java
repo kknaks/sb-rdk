@@ -23,19 +23,24 @@ public class PostService {
 
     author.increasePostsCount();
 
-    return RsData.of(
-
-        postRepository.save(Post.builder()
-            .author(author)
-            .title(title)
-            .content(content)
-            .build()
-        )
+    Post post = postRepository.save(Post.builder()
+        .author(author)
+        .title(title)
+        .content(content)
+        .build()
     );
+
+    firePostCreateEvent(post);
+
+    return RsData.of(post);
   }
 
   public Author of(Member member) {
     return entityManager.getReference(Author.class, member.getId());
+  }
+
+  private void firePostCreateEvent(Post post) {
+    System.out.println("게시글 생성 알림");
   }
 
 }
