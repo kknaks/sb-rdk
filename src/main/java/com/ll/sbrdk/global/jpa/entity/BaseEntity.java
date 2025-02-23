@@ -1,4 +1,4 @@
-package com.ll.sbrdk.global.jap.entity;
+package com.ll.sbrdk.global.jpa.entity;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 

@@ -1,6 +1,6 @@
 package com.ll.sbrdk.domain.post.post.entity;
 
-import com.ll.sbrdk.global.jap.entity.BaseEntity;
+import com.ll.sbrdk.global.jpa.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

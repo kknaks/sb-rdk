@@ -1,6 +1,6 @@
 package com.ll.sbrdk.domain.member.member.entity;
 
-import com.ll.sbrdk.global.jap.entity.BaseEntity;
+import com.ll.sbrdk.global.jpa.entity.BaseEntity;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
