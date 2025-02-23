@@ -3,7 +3,6 @@ package com.ll.sbrdk.domain.member.member.service;
 import com.ll.sbrdk.domain.member.member.entity.Member;
 import com.ll.sbrdk.domain.member.member.repository.MemberRepository;
 import com.ll.sbrdk.global.RsData.RsData;
-import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,14 +27,5 @@ public class MemberService {
 
   public long count() {
     return memberRepository.count();
-  }
-
-  @Transactional
-  public void increasePostCount(long id) {
-    findById(id).ifPresent(Member::increasePostCount);
-  }
-
-  private Optional<Member> findById(long id) {
-    return memberRepository.findById(id);
   }
 }

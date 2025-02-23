@@ -1,6 +1,5 @@
 package com.ll.sbrdk.domain.member.member.entity;
 
-import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
 
 import com.ll.sbrdk.global.jpa.entity.BaseEntity;
@@ -21,10 +20,4 @@ public class Member extends BaseEntity {
   private String username;
   private String password;
   private String nickname;
-
-  @Setter(PRIVATE)
-  private long postCount;
-  public void increasePostCount() {
-    postCount++;
-  }
 }
