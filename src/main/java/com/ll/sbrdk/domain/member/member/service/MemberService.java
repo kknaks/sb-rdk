@@ -3,6 +3,7 @@ package com.ll.sbrdk.domain.member.member.service;
 import com.ll.sbrdk.domain.member.member.entity.Member;
 import com.ll.sbrdk.domain.member.member.repository.MemberRepository;
 import com.ll.sbrdk.global.RsData.RsData;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,5 +28,9 @@ public class MemberService {
 
   public long count() {
     return memberRepository.count();
+  }
+
+  public List<Member> findAll() {
+    return memberRepository.findAll();
   }
 }
