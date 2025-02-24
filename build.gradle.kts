@@ -34,6 +34,7 @@ dependencies {
     testImplementation("org.springframework.kafka:spring-kafka-test")
     runtimeOnly("com.h2database:h2")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    developmentOnly("org.springframework.boot:spring-boot-docker-compose")
 }
 
 tasks.withType<Test> {
