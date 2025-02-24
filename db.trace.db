@@ -1,3 +1,0 @@
-2025-02-24 09:36:10.395234+09:00 jdbc[13]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM NOTI POST [*]MEMBER"; SQL statement:
-SELECT * FROM NOTI POST MEMBER [42000-232]

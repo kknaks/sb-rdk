@@ -1,16 +1,15 @@
 package com.ll.sbrdk.domain.post.post.service;
 
 import com.ll.sbrdk.domain.member.member.entity.Member;
-import com.ll.sbrdk.domain.noti.noti.service.NotiService;
 import com.ll.sbrdk.domain.post.post.entity.Author;
 import com.ll.sbrdk.domain.post.post.entity.Post;
 import com.ll.sbrdk.domain.post.post.repository.PostRepository;
 import com.ll.sbrdk.global.RsData.RsData;
+import com.ll.sbrdk.global.event.PostCreatedEvent;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,9 +21,7 @@ public class PostService {
   @PersistenceContext
   private EntityManager entityManager;
 
-  @Autowired
-  @Lazy
-  private NotiService notiService;
+  private final ApplicationEventPublisher eventPublisher;
 
   public RsData<Post> write(Author author, String title, String content) {
 
@@ -37,7 +34,7 @@ public class PostService {
         .build()
     );
 
-    firePostCreateEvent(post);
+    eventPublisher.publishEvent(new PostCreatedEvent(this, post));
 
     return RsData.of(post);
   }
@@ -48,10 +45,6 @@ public class PostService {
 
   public Member of(Author author) {
     return entityManager.getReference(Member.class, author.getId());
-  }
-
-  private void firePostCreateEvent(Post post) {
-   notiService.postCreated(post);
   }
 
 }
