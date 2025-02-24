@@ -10,6 +10,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,7 +22,11 @@ public class PostService {
   @PersistenceContext
   private EntityManager entityManager;
 
+  //스프링 발행자
   private final ApplicationEventPublisher eventPublisher;
+
+  //카파카 발행자
+  private final KafkaTemplate<Object, Object> kafkaTemplate;
 
   public RsData<Post> write(Author author, String title, String content) {
 
@@ -35,6 +40,8 @@ public class PostService {
     );
 
     eventPublisher.publishEvent(new PostCreatedEvent(this, post));
+
+    kafkaTemplate.send("post-created-1", post.getId()+"번 글이 생성되었습니다.");
 
     return RsData.of(post);
   }
