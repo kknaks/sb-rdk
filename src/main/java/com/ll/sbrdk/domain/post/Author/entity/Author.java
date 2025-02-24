@@ -1,4 +1,4 @@
-package com.ll.sbrdk.domain.post.post.entity;
+package com.ll.sbrdk.domain.post.Author.entity;
 
 import static lombok.AccessLevel.PRIVATE;
 

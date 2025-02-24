@@ -1,7 +1,7 @@
 package com.ll.sbrdk.domain.post.post.service;
 
 import com.ll.sbrdk.domain.member.member.entity.Member;
-import com.ll.sbrdk.domain.post.post.entity.Author;
+import com.ll.sbrdk.domain.post.Author.entity.Author;
 import com.ll.sbrdk.domain.post.post.entity.Post;
 import com.ll.sbrdk.domain.post.post.repository.PostRepository;
 import com.ll.sbrdk.global.RsData.RsData;
