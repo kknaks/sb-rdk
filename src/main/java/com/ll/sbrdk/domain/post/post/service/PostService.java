@@ -5,6 +5,7 @@ import com.ll.sbrdk.domain.post.Author.entity.Author;
 import com.ll.sbrdk.domain.post.post.entity.Post;
 import com.ll.sbrdk.domain.post.post.repository.PostRepository;
 import com.ll.sbrdk.global.RsData.RsData;
+import com.ll.sbrdk.global.dto.post.PostDto;
 import com.ll.sbrdk.global.event.PostCreatedEvent;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -41,7 +42,8 @@ public class PostService {
 
     eventPublisher.publishEvent(new PostCreatedEvent(this, post));
 
-    kafkaTemplate.send("post-created-1", post.getId()+"번 글이 생성되었습니다.");
+//    kafkaTemplate.send("post-created-1", post.getId()+"번 글이 생성되었습니다.");
+    kafkaTemplate.send("post-created-1", new PostDto(post.getTitle(), post.getContent()));
 
     return RsData.of(post);
   }

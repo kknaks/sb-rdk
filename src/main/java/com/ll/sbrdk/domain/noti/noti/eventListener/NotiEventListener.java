@@ -1,6 +1,7 @@
 package com.ll.sbrdk.domain.noti.noti.eventListener;
 
 import com.ll.sbrdk.domain.noti.noti.service.NotiService;
+import com.ll.sbrdk.global.dto.post.PostDto;
 import com.ll.sbrdk.global.event.PostCreatedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.event.EventListener;
@@ -21,8 +22,13 @@ public class NotiEventListener {
     notiService.postCreated(event.getPost());
   }
 
+//  @KafkaListener(topics = "post-created-1", groupId = "2")
+//  public void consume2(String message){
+//    System.out.println("Consumed message: " + message);
+//  }
+
   @KafkaListener(topics = "post-created-1", groupId = "2")
-  public void consume2(String message){
-    System.out.println("Consumed message: " + message);
+  public void consume2(PostDto postDto){
+    System.out.println("Consumed message: " + postDto.toString());
   }
 }
